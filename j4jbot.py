@@ -51,13 +51,12 @@ async def j4j():
     for guild in bot.guilds:
         for channel in guild.channels:
             if 'j4j' in channel.name:
-                print(channel.name)
-                channel = bot.get_channel(channel)
+                channel = bot.get_channel(channel.id)
                 try:
                     await channel.send(random.choice(j4j_msg))
                     print(f"> Sent message in {channel.name} in {guild.name}")
                 except:
-                    print(f"> Couldn't send message in {channel.name} in {guild.name}")
+                    print(f"> Couldn't send message in {channel} in {guild.name}")
 @j4j.before_loop
 async def before_j4j():
   await bot.wait_until_ready()
